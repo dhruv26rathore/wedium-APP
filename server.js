@@ -6,6 +6,7 @@ const cors = require("cors") // import cors
 const dotenv = require('dotenv');
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+const serverless = require("serverless-http");
 
 dotenv.config({ path: '.env.local' });
 console.log('porttttt ================> ', process.env.PORT)
@@ -61,6 +62,8 @@ app.get('/', (req, res) => {
 });
 
 require('./src/routes/apis')(app);
+app.use(`/.netlify/functions/api`, app);
+serverless(app)
 
 app.get('*', (req, res) => res.status(404).json({ error: 'API not found.' }));
 
