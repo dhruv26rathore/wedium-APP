@@ -8,6 +8,7 @@ const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
 dotenv.config({ path: '.env.local' });
+console.log('porttttt ================> ', process.env.PORT)
 const PORT = process.env.PORT || 8080
 
 const connectDB = require('./src/dao/database');
